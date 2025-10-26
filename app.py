@@ -75,7 +75,19 @@ def gallery():
 
 @app.get("/api/v1/health")
 def health():
-    return "OK", 200
+    """Health check endpoint. Checks connection to Azure Blob Storage."""
+    if cc is None:
+        return jsonify(
+            status="UNHEALTHY", message="Storage client failed to initialize"
+        ), 503
+    try:
+        # Simple check: try to get container properties (cheap operation)
+        cc.get_container_properties()
+        return jsonify(status="OK", message="Azure Storage connection successful"), 200
+    except Exception as e:
+        return jsonify(
+            status="DEGRADED", message=f"Storage connection failed: {e}"
+        ), 503
 
 if __name__ == "__main__":
     app.run(debug=True)
