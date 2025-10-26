@@ -73,7 +73,7 @@ def gallery():
     urls = [f"{cc.url}/{b.name}" for b in cc.list_blobs()]
     return jsonify(ok=True, gallery=urls)
 
-@app.get("/health")
+@app.get("/api/v1/health")
 def health():
     return "OK", 200
 
