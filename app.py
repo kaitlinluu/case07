@@ -13,7 +13,7 @@ load_dotenv()
 # --- Configuration ---
 CONNECTION_STRING = os.environ.get("AZURE_STORAGE_CONNECTION_STRING")
 STORAGE_ACCOUNT_URL = os.environ.get("STORAGE_ACCOUNT_URL")
-CONTAINER_NAME = os.environ.get("IMAGES_CONTAINER", "lanternfly-images")
+CONTAINER_NAME = os.environ.get("IMAGES_CONTAINER", "lanternfly-images-gyvmon83")
 MAX_FILE_SIZE_MB = 10
 MAX_FILE_SIZE = MAX_FILE_SIZE_MB * 1024 * 1024
 ALLOWED_CONTENT_TYPES = ["image/jpeg", "image/png", "image/gif", "image/webp"]
